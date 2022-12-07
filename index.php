@@ -36,12 +36,16 @@ class Movie
 
 $matrix = new Movie('The Matrix', 'TRUE STORY!', '180', 8);
 $matrix->topTenMovies($matrix->vote);
-var_dump($matrix);
+// var_dump($matrix);
 
 $avatar = new Movie('Avatar', 'Fantasy', '180', 9);
 $avatar->topTenMovies($avatar->vote);
-var_dump($avatar);
+// var_dump($avatar);
 
+$movies = [
+    $avatar = new Movie('Avatar', 'Fantasy', '180', 9),
+    $matrix = new Movie('The Matrix', 'TRUE STORY!', '180', 8)
+]
 
 ?>
 
@@ -57,28 +61,18 @@ var_dump($avatar);
 
 <body>
 
-    <h1>Movie</h1>
-    <h4>Title: <?= $matrix->title ?></h4>
-    <h4>Genre: <?= $matrix->genre ?></h4>
-    <h4>Duration: <?= $matrix->duration ?></h4>
-    <h4>Vote: <?= $matrix->vote ?></h4>
-    <?PHP if ($matrix->vote >= 8) : ?>
-        <h4 class="top">IN TOP 10 ITALIA</h4>
-    <?PHP else : ?>
-        <h4 class="no-top">NON IN TOP 10</h4>
-    <?PHP endif ?>
-
-    <h1>Movie</h1>
-    <h4>Title: <?= $avatar->title ?></h4>
-    <h4>Genre: <?= $avatar->genre ?></h4>
-    <h4>Duration: <?= $avatar->duration ?></h4>
-    <h4>Vote: <?= $avatar->vote ?></h4>
-    <?PHP if ($avatar->vote >= 8) : ?>
-        <h4 class="top">IN TOP 10 ITALIA</h4>
-    <?PHP else : ?>
-        <h4 class="no-top">NON IN TOP 10</h4>
-    <?PHP endif ?>
-
+    <?php foreach ($movies as $movie) : ?>
+        <h1>Movie</h1>
+        <h4>Title: <?= $movie->title ?></h4>
+        <h4>Genre: <?= $movie->genre ?></h4>
+        <h4>Duration: <?= $movie->duration ?></h4>
+        <h4>Vote: <?= $movie->vote ?></h4>
+        <?PHP if ($movie->vote >= 8) : ?>
+            <h4 class="top">IN TOP 10 ITALIA</h4>
+        <?PHP else : ?>
+            <h4 class="no-top">NON IN TOP 10</h4>
+        <?PHP endif ?>
+    <?php endforeach ?>
     <style lang="css">
         .top {
             color: green;
